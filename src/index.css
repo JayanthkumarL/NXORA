@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-textPrimary;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 inline-block;
+  }
+  .btn-outline {
+    @apply px-6 py-3 rounded-full border-2 border-primary text-primary font-medium hover:bg-primary/5 transition-all inline-block;
+  }
+  .btn-secondary {
+    @apply px-6 py-3 rounded-full bg-accent text-white font-medium hover:bg-accent/90 transition-all inline-block;
+  }
+}

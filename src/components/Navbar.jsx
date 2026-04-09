@@ -28,8 +28,9 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         {/* Logo */}
-        <a href="#" className="font-display font-bold text-2xl tracking-tight text-primary">
-          NXORA
+        <a href="#" className="flex items-center gap-2">
+          <img src="/img/logo.png" alt="NXORA Logo" className="h-10 w-auto rounded-lg" />
+          <span className="font-display font-bold text-2xl tracking-tight text-primary hidden sm:block">NXORA</span>
         </a>
         
         {/* Desktop Nav */}

@@ -5,8 +5,11 @@ const Footer = () => {
     <footer className="border-t border-border/30 py-8 bg-surface mt-12 bg-white">
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-10 flex flex-col md:flex-row justify-between items-center gap-6">
         
-        <div className="font-display font-bold text-xl tracking-tight text-primary">
-           NXORA
+        <div className="flex items-center gap-3">
+          <img src="/img/logo.png" alt="NXORA Logo" className="h-10 w-auto rounded-lg" />
+          <div className="font-display font-bold text-xl tracking-tight text-primary">
+             NXORA
+          </div>
         </div>
         
         <div className="flex gap-6 text-sm text-textSecondary font-medium">

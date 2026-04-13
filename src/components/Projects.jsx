@@ -3,23 +3,30 @@ import { motion } from 'framer-motion';
 
 const projects = [
   {
+    id: 3,
+    name: 'Karnataka Sports Foundation',
+    category: 'Full-Service Platform',
+    tags: ['React', 'Firebase', 'Netlify', 'Web App'],
+    description: 'A high-performance digital hub for athlete registration and grassroots program management across 20+ districts.',
+    image: '/img/sports-karnataka.png',
+    link: 'https://sportskarnataka.com/'
+  },
+  {
     id: 1,
     name: 'Farm Management Dashboard',
     category: 'Web App',
-    tags: ['React', 'Vercel', 'Frontend','Backend'],
+    tags: ['React', 'Vercel', 'Frontend', 'Backend'],
     description: 'A comprehensive frontend interface for farm management and operations.',
-    initials: 'FM',
-    gradient: 'from-accent/30 to-accent/10',
+    image: '/img/farm-management.png',
     link: 'https://farm-management-frontend-virid.vercel.app/#'
   },
   {
     id: 2,
     name: 'Freelancing Platform',
     category: 'Web App',
-    tags: ['React', 'Vercel', 'Frontend','Backend'],
+    tags: ['React', 'Vercel', 'Frontend', 'Backend'],
     description: 'A dedicated platform connecting freelancers with clients for professional services.',
-    initials: 'FP',
-    gradient: 'from-primary/20 to-accent/10',
+    image: '/img/freelancing-platform.png',
     link: 'https://freelancingplat.vercel.app'
   }
 ];
@@ -43,7 +50,7 @@ const Projects = () => {
         </a>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project, index) => (
           <motion.div
             key={project.id}
@@ -51,19 +58,20 @@ const Projects = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className={`group rounded-3xl overflow-hidden bg-surface transition-all duration-500 hover:shadow-[0_12px_40px_rgba(29,61,20,0.08)] hover:-translate-y-1 ${
-              index === 2 ? 'md:col-span-2' : ''
-            }`}
+            className="group rounded-3xl overflow-hidden bg-surface transition-all duration-500 hover:shadow-[0_12px_40px_rgba(29,61,20,0.08)] hover:-translate-y-1"
           >
             <a href={project.link} target={project.link !== '#' ? "_blank" : undefined} rel="noopener noreferrer" className="relative w-full h-full p-6 md:p-8 flex flex-col cursor-pointer block text-left">
-              {/* Image placeholder */}
-              <div className={`w-full aspect-[16/9] rounded-2xl overflow-hidden bg-gradient-to-br ${project.gradient} flex items-center justify-center mb-6 group-hover:scale-[1.02] transition-transform duration-500`}>
-                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-sm">
-                  <span className="text-4xl md:text-5xl font-display font-bold text-primary">{project.initials}</span>
-                </div>
+              {/* Project Screenshot */}
+              <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden mb-6 relative bg-surface">
+                <img 
+                  src={project.image} 
+                  alt={project.name} 
+                  className="w-full h-full object-cover object-top group-hover:scale-[1.05] transition-transform duration-500" 
+                  loading="lazy"
+                />
                 
                 {/* Hover Overlay */}
-                <div className="absolute inset-6 md:inset-8 rounded-2xl bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                <div className="absolute inset-0 rounded-2xl bg-primary/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
                   <span className="px-6 py-3 rounded-full bg-white text-primary font-semibold flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                     View Project <span>→</span>
                   </span>

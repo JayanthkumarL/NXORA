@@ -22,10 +22,9 @@ const Contact = () => {
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent" />
         
         <h2 className="font-display text-4xl md:text-5xl font-bold text-primary mb-6">
-          Let's Work Together
-        </h2>
+Let’s build something great together.        </h2>
         <p className="text-textSecondary text-lg max-w-xl mx-auto mb-12 leading-relaxed">
-          Drop us an email and we'll respond within 24 hours. We're currently accepting new projects.
+          We respond within 24 hours,usually much faster. <br />Currently open to new projects — let's talk.
         </p>
         
         {/* Email & Phone CTA */}

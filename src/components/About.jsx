@@ -44,7 +44,25 @@ const About = () => {
             </p>
           </div>
 
-          <div className="mt-10">
+          <div className="mt-12 border-t border-border/30">
+            {[
+              { title: 'Built for Speed', desc: 'Sub-3s load times, every time' },
+              { title: 'Flawless on Every Screen', desc: 'Phone to desktop' },
+              { title: 'Found on Google', desc: 'Clean code, optimised from day one' },
+              { title: 'Grows With You', desc: 'No rebuilds as your business scales' }
+            ].map((item, index) => (
+              <div key={index} className="py-4 border-b border-border/30 text-lg flex items-baseline gap-2">
+                <span className="text-accent">•</span>
+                <div>
+                  <span className="font-display font-semibold text-primary">{item.title}</span>
+                  <span className="text-primary/60 font-display"> — </span>
+                  <span className="text-textSecondary">{item.desc}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* <div className="mt-10">
             <h3 className="text-primary font-semibold font-display mb-4 text-lg">Core Technologies</h3>
             <div className="flex flex-wrap gap-2.5">
               {skills.map((skill, index) => (
@@ -60,7 +78,7 @@ const About = () => {
                 </motion.span>
               ))}
             </div>
-          </div>
+          </div> */}
         </motion.div>
 
         {/* Right Col: Team */}

@@ -42,8 +42,8 @@ const Hero = () => {
           variants={item}
           className="font-display font-bold text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] tracking-tight text-primary mb-8"
         >
-          Building <span className="italic">reliable</span> digital solutions for <br />
-          businesses that want to GROW
+"We Don't Just Build Websites.
+ We Build Your Competitive Edge."          
         </motion.h1>
         
         {/* Subheading */}
@@ -51,8 +51,8 @@ const Hero = () => {
           variants={item}
           className="text-lg md:text-xl text-textSecondary max-w-xl mx-auto mb-12 leading-relaxed"
         >
-          Explore the next frontier of creative solutions for startups & brands.
-                         We design and build high-performance websites, web apps, and digital products for startups and growing businesses.
+         Nxora helps startups and growing businesses launch fast, high-performing websites and smart digital solutions designed to increase visibility, engagement, and conversions.
+
         </motion.p>
         
         {/* CTAs */}
@@ -61,13 +61,12 @@ const Hero = () => {
             View Our Work
           </a>
           <a href="#contact" className="btn-outline">
-            Get In Touch
+            Book Free Consultation
           </a>
         </motion.div>
         
         <motion.p variants={item} className="text-sm text-textMuted mt-4">
-          No commitments. Let's just talk.
-        </motion.p>
+No commitment. Just a quick discussion about your business.        </motion.p>
       </motion.div>
     </section>
   );

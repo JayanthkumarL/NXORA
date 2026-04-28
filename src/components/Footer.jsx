@@ -19,7 +19,7 @@ const Footer = () => {
         </div>
 
         <div className="text-sm text-textMuted">
-          © {new Date().getFullYear()}   NXORA Crafted with <span className="text-accent">TRUST</span>
+          © {new Date().getFullYear()} NXORA — Crafted with TRUST
         </div>
       </div>
     </footer>

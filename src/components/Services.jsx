@@ -53,7 +53,7 @@ const Services = () => {
         className="mb-16 text-center"
       >
         <h2 className="font-display text-4xl md:text-5xl font-bold text-primary mb-4">
-          A plan that works for you.
+Solutions designed to grow your business
         </h2>
         <p className="text-textSecondary text-lg max-w-2xl mx-auto">
           We offer a range of services tailored to bring your vision to life.

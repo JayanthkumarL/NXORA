@@ -42,7 +42,7 @@ Let’s build something great together.        </h2>
             className="group flex items-center gap-3 bg-white px-6 py-4 rounded-full border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-sm w-full md:w-auto justify-center"
           >
             <Phone className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
-            <span className="font-mono text-sm text-primary">8431084592</span>
+            <span className="font-mono text-sm text-primary">+91 7676111732</span>
           </a>
         </div>
 

@@ -47,7 +47,7 @@ Let’s build something great together.        </h2>
         </div>
 
         {/* Social Icons */}
-        <div className="flex justify-center gap-4">
+        {/* <div className="flex justify-center gap-4">
           {socialLinks.map((link, i) => (
             <a
               key={i}
@@ -58,7 +58,7 @@ Let’s build something great together.        </h2>
               {link.icon}
             </a>
           ))}
-        </div>
+        </div> */}
       </motion.div>
     </section>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -63,10 +63,20 @@ const projects = [
 const Projects = () => {
   const [itemsPerPage, setItemsPerPage] = useState(3);
   const [currentPage, setCurrentPage] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Touch / swipe state (mobile only)
+  const dragStartX = useRef(null);
+  const isDragging = useRef(false);
+  const dragDelta = useRef(0);
+  const [liveOffset, setLiveOffset] = useState(0);
+  const sliderRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (mobile) {
         setItemsPerPage(1);
       } else if (window.innerWidth < 1024) {
         setItemsPerPage(2);
@@ -101,6 +111,50 @@ const Projects = () => {
     pages.push(projects.slice(i, i + itemsPerPage));
   }
 
+  // ── Touch / swipe handlers (mobile only) ─────────────────────────────────
+
+  const onDragStart = (clientX) => {
+    dragStartX.current = clientX;
+    isDragging.current = true;
+    dragDelta.current = 0;
+  };
+
+  const onDragMove = (clientX) => {
+    if (!isDragging.current) return;
+    const delta = clientX - dragStartX.current;
+    dragDelta.current = delta;
+    setLiveOffset(delta);
+  };
+
+  const onDragEnd = () => {
+    if (!isDragging.current) return;
+    isDragging.current = false;
+    const threshold = (sliderRef.current?.offsetWidth ?? 200) * 0.2;
+    if (dragDelta.current < -threshold) nextPage();
+    else if (dragDelta.current > threshold) prevPage();
+    setLiveOffset(0);
+    dragDelta.current = 0;
+  };
+
+  const onTouchStart = (e) => onDragStart(e.touches[0].clientX);
+  const onTouchMove = (e) => onDragMove(e.touches[0].clientX);
+  const onTouchEnd = () => onDragEnd();
+
+  const onClickCapture = (e) => {
+    if (Math.abs(dragDelta.current) > 5) e.preventDefault();
+  };
+
+  // Slider translate
+  const baseTranslate = -currentPage * 100;
+  const mobileSliderStyle = isDragging.current
+    ? { transform: `translateX(calc(${baseTranslate}% + ${liveOffset}px))`, transition: 'none' }
+    : { transform: `translateX(${baseTranslate}%)`, transition: 'transform 500ms cubic-bezier(0.4,0,0.2,1)' };
+
+  const desktopSliderStyle = {
+    transform: `translateX(-${currentPage * 100}%)`,
+    transition: 'transform 500ms ease-in-out',
+  };
+
   return (
     <section id="work" className="py-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
       <motion.div
@@ -115,8 +169,8 @@ const Projects = () => {
           <p className="text-textSecondary text-lg max-w-2xl">A selection of our recent work for ambitious brands.</p>
         </div>
         
-        {/* Navigation Arrows in Header */}
-        <div className="flex items-center gap-3">
+        {/* Desktop: arrow buttons in header */}
+        {/* <div className="hidden md:flex items-center gap-3">
           <button 
             onClick={prevPage}
             className="flex items-center justify-center w-12 h-12 rounded-full border border-border bg-card text-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-sm"
@@ -131,12 +185,24 @@ const Projects = () => {
           >
             <ChevronRight size={20} />
           </button>
+        </div> */}
+
+        {/* Mobile: swipe hint badge */}
+        <div className="flex md:hidden items-center gap-2 text-textSecondary text-sm select-none">
+          <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-border/60 bg-card">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M5 12l4-4m-4 4 4 4"/>
+              <path d="M19 12l-4-4m4 4-4 4"/>
+            </svg>
+            Swipe to explore
+          </span>
         </div>
       </motion.div>
 
-      {/* Slider Container with absolute floating arrows on the left and right */}
+      {/* Slider Container */}
       <div className="relative px-2 md:px-12">
-        {/* Floating Left Arrow */}
+
+        {/* Desktop: floating left arrow */}
         <button 
           onClick={prevPage}
           className="absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center w-14 h-14 rounded-full border border-border/80 bg-white/90 backdrop-blur-sm text-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-md hover:-translate-x-1 hover:shadow-lg"
@@ -145,7 +211,7 @@ const Projects = () => {
           <ChevronLeft size={24} />
         </button>
 
-        {/* Floating Right Arrow */}
+        {/* Desktop: floating right arrow */}
         <button 
           onClick={nextPage}
           className="absolute right-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center w-14 h-14 rounded-full border border-border/80 bg-white/90 backdrop-blur-sm text-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-md hover:translate-x-1 hover:shadow-lg"
@@ -155,10 +221,19 @@ const Projects = () => {
         </button>
 
         {/* Horizontal Slider Area */}
-        <div className="overflow-hidden w-full py-4">
-          <div 
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentPage * 100}%)` }}
+        <div
+          ref={sliderRef}
+          className="overflow-hidden w-full py-4"
+          // Touch events always attached; only meaningful on mobile
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+          onClickCapture={onClickCapture}
+          style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
+        >
+          <div
+            className="flex"
+            style={isMobile ? mobileSliderStyle : desktopSliderStyle}
           >
             {pages.map((pageItems, pageIdx) => (
               <div key={pageIdx} className="w-full flex-shrink-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-1">
@@ -171,7 +246,7 @@ const Projects = () => {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     className="group rounded-3xl overflow-hidden bg-card border border-border/40 transition-all duration-500 hover:shadow-[0_12px_40px_rgba(29,61,20,0.08)] hover:-translate-y-1 h-full"
                   >
-                    <a href={project.link} target={project.link !== '#' ? "_blank" : undefined} rel="noopener noreferrer" className="relative w-full h-full p-6 md:p-8 flex flex-col cursor-pointer block text-left">
+                    <a href={project.link} target={project.link !== '#' ? "_blank" : undefined} rel="noopener noreferrer" className="relative w-full h-full p-6 md:p-8 flex flex-col cursor-pointer block text-left" draggable="false">
                       {/* Project Screenshot */}
                       <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden mb-6 relative bg-surface">
                         <img 
@@ -179,6 +254,7 @@ const Projects = () => {
                           alt={project.name} 
                           className="w-full h-full object-cover object-top group-hover:scale-[1.05] transition-transform duration-500" 
                           loading="lazy"
+                          draggable="false"
                         />
                         
                         {/* Hover Overlay */}
@@ -209,16 +285,32 @@ const Projects = () => {
         </div>
       </div>
 
+      {/* Mobile: swipe track bar */}
+      <div className="flex md:hidden items-center justify-center gap-3 mt-6">
+        <span className="text-xs text-textSecondary/40 font-mono">←</span>
+        <div className="relative h-1 flex-1 max-w-[200px] bg-border/40 rounded-full overflow-hidden">
+          <motion.div
+            className="absolute left-0 top-0 h-full rounded-full bg-primary"
+            animate={{
+              width: `${100 / totalPages}%`,
+              x: `${currentPage * 100}%`,
+            }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          />
+        </div>
+        <span className="text-xs text-textSecondary/40 font-mono">→</span>
+      </div>
+
       {/* Pagination Dots */}
-      <div className="flex justify-center items-center gap-2 mt-8">
+      <div className="flex justify-center items-center gap-2 mt-4">
         {Array.from({ length: totalPages }).map((_, idx) => (
           <button
             key={idx}
             onClick={() => setCurrentPage(idx)}
-            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+            className={`h-2 rounded-full transition-all duration-300 ${
               currentPage === idx 
                 ? 'bg-primary w-8' 
-                : 'bg-border hover:bg-textSecondary'
+                : 'bg-border hover:bg-textSecondary w-2.5'
             }`}
             aria-label={`Go to page ${idx + 1}`}
           />

@@ -3,6 +3,25 @@ import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const projects = [
+   {
+    id: 6,
+    name: 'Mahadeshwara Agro Nursery Garden',
+    category: 'E-Commerce Catalog',
+    tags: ['Next.js', 'Firebase', 'Netlify', 'WhatsApp API'],
+    description: 'A full-stack e-commerce catalog for a plant nursery, featuring 120+ product listings across 6 categories with a zero-friction WhatsApp ordering flow — no cart, no checkout, just a direct line from browsing to order confirmation.',
+    image: '/img/mahadeshwara-agro.png',
+    link: 'https://mahadeshwaraagrofarm.in'
+  },
+  {
+    id: 3,
+    name: 'Karnataka Sports Foundation',
+    category: 'Full-Service Platform',
+    tags: ['React', 'Firebase', 'Netlify', 'Web App'],
+    description: 'A high-performance digital hub for athlete registration and grassroots program management across 20+ districts.',
+    image: '/img/sports-karnataka.png',
+    link: 'https://sportskarnataka.com/'
+  },
+ 
   {
     id: 4,
     name: 'Timeless Moments',
@@ -20,15 +39,6 @@ const projects = [
     description: 'An interactive digital portal for a premium activity and early learning centre designed for children, featuring program details and admissions.',
     image: '/img/playhomes.png',
     link: 'https://playhomes.netlify.app/'
-  },
-  {
-    id: 3,
-    name: 'Karnataka Sports Foundation',
-    category: 'Full-Service Platform',
-    tags: ['React', 'Firebase', 'Netlify', 'Web App'],
-    description: 'A high-performance digital hub for athlete registration and grassroots program management across 20+ districts.',
-    image: '/img/sports-karnataka.png',
-    link: 'https://sportskarnataka.com/'
   },
   {
     id: 1,

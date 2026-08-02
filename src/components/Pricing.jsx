@@ -5,11 +5,10 @@ const pricingPlans = [
   {
     title: 'Starter Website',
     description: 'Perfect for small businesses looking to establish an online presence.',
-    price: '₹12,000 – ₹15,000',
+    price: '₹15,999 – ₹17,999',
     features: [
       '3–5 custom pages',
       'Fully mobile responsive',
-      'Basic SEO optimization',
       'Fast loading speed',
       'Contact form integration'
     ],
@@ -19,13 +18,13 @@ const pricingPlans = [
   {
     title: 'Business Website',
     description: 'For growing brands needing advanced features and high-tier design.',
-    price: '₹18,999 – ₹25,000',
+    price: '₹24,999 – ₹27,999',
     features: [
       'Complete custom design',
       'Advanced UI/UX layout',
       'Performance & speed optimized',
       'Dynamic content management',
-      'Advanced SEO setup',
+      'SEO optimization',
       'Priority email support'
     ],
     popular: true,
@@ -34,7 +33,7 @@ const pricingPlans = [
   {
     title: 'AI Smart Website',
     description: 'For serious growth leveraging modern automation tools.',
-    price: '₹35,000+',
+    price: '₹40,000+',
     features: [
       'Everything in Business tier',
       'Custom AI chatbot integration',

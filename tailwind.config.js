@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        "surface": "#fbf9f4",
+        "surface": "#ffffff",
         "inverse-primary": "#cac6c1",
         "on-secondary-container": "#795b3c",
         "surface-tint": "#605e5a",
@@ -36,11 +36,11 @@ export default {
         "primary-fixed-dim": "#cac6c1",
         "secondary": "#77583a",
         "primary-container": "#1c1b18",
-        "background": "#fbf9f4",
+        "background": "#ffffff",
         "secondary-fixed-dim": "#e7bf9a",
         "on-surface": "#1b1c19",
         "on-error": "#ffffff",
-        "surface-bright": "#fbf9f4",
+        "surface-bright": "#ffffff",
         "inverse-surface": "#30312e",
         "inverse-on-surface": "#f2f1ec",
         "primary-fixed": "#e6e2dd",

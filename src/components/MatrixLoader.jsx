@@ -25,6 +25,7 @@ export default function MatrixLoader(props) {
     isDecorative = true,
     ariaLabel = 'Loading...',
     blendMode = 'normal',
+    resolveAfterMs = 0, // if > 0, stops randomizing and resolves to digits after this many ms
   } = props;
 
   const isStatic = false;
@@ -48,7 +49,10 @@ export default function MatrixLoader(props) {
       return;
     }
     const charPool = noiseCharacters || '01';
+    let isResolved = false;
+
     const interval = setInterval(() => {
+      if (isResolved) return;
       let nextStr = '';
       for (let i = 0; i < digits.length; i++) {
         if (digits[i] === ' ' || digits[i] === '\n') {
@@ -60,8 +64,21 @@ export default function MatrixLoader(props) {
       }
       setDisplayDigits(nextStr);
     }, noiseInterval);
-    return () => clearInterval(interval);
-  }, [digits, randomizeDigits, noiseCharacters, noiseInterval, isStatic]);
+
+    let timeout;
+    if (resolveAfterMs > 0) {
+      timeout = setTimeout(() => {
+        isResolved = true;
+        clearInterval(interval);
+        setDisplayDigits(digits);
+      }, resolveAfterMs);
+    }
+
+    return () => {
+      clearInterval(interval);
+      if (timeout) clearTimeout(timeout);
+    };
+  }, [digits, randomizeDigits, noiseCharacters, noiseInterval, isStatic, resolveAfterMs]);
 
   // Clean character splitting
   const digitList = displayDigits.split('');

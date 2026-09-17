@@ -1,24 +1,83 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=DM+Mono:wght@400;500&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Hedvig+Letters+Serif:opsz@12..24&family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&family=Manrope:wght@400;500;600;700&family=Monda:wght@400;500;600;700&family=Outfit:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&family=Red+Hat+Display:wght@400;500;600;700&family=Rethink+Sans:wght@400;500;600;700&family=Tillana:wght@400;500;600;700&family=Urbanist:wght@400;500;600;700&display=swap");
+
+@import "tailwindcss";
+@config "../tailwind.config.js";
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
   }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+
   body {
-    @apply bg-background text-textPrimary;
+    overscroll-behavior: none;
+    @apply bg-surface text-on-surface font-sans;
+  }
+
+  /* Hide scrollbar across browsers */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  * {
+    scrollbar-width: none;
+  }
+
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+
+  main > :last-child {
+    margin-bottom: 0 !important;
   }
 }
 
 @layer components {
+  /* Editorial primary button — dark fill, mono uppercase */
   .btn-primary {
-    @apply px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 inline-block;
+    @apply px-6 py-3.5 bg-primary-container text-surface font-mono text-label-mono uppercase tracking-widest hover:bg-secondary transition-colors duration-200 inline-flex items-center justify-center;
   }
+
+  /* Editorial outline button */
   .btn-outline {
-    @apply px-6 py-3 rounded-full border-2 border-primary text-primary font-medium hover:bg-primary/5 transition-all inline-block;
+    @apply px-6 py-3.5 bg-transparent text-on-surface font-mono text-label-mono uppercase tracking-widest hover:bg-surface-container transition-colors duration-200 inline-flex items-center justify-center border border-outline-variant;
   }
-  .btn-secondary {
-    @apply px-6 py-3 rounded-full bg-accent text-white font-medium hover:bg-accent/90 transition-all inline-block;
+
+  /* Section label — mono uppercase with tracking */
+  .section-label {
+    @apply font-mono text-label-mono text-secondary tracking-widest uppercase block;
+  }
+
+  /* Section heading — Playfair Display large */
+  .section-heading {
+    @apply font-display text-headline-xl text-on-surface;
+  }
+
+  /* Card container — white with border */
+  .card {
+    @apply bg-surface-container-lowest border border-outline-variant transition-colors duration-300 hover:border-secondary;
+  }
+
+  /* Mono tag pill */
+  .tag-pill {
+    @apply font-mono text-label-mono-sm px-2.5 py-1 bg-surface-container text-on-surface;
+  }
+
+  /* Case study badge */
+  .case-badge {
+    @apply font-mono text-label-mono-sm px-2 py-0.5 border border-outline-variant text-secondary uppercase;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }

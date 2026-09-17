@@ -1,109 +1,91 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const skills = ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'Figma', 'Node.js', 'TypeScript', 'UI/UX'];
-
 const team = [
   {
     name: 'Apoorva',
-    role: 'UI/UX Designer',
-    initials: 'A',
-    gradient: 'from-accent to-primary'
+    role: 'UI/UX Designer & Design Systems Lead',
+    label: 'CO-FOUNDER',
+    bio: 'Specializing in high-trust interface architecture, typography hierarchies, and intuitive customer onboarding flows for complex domains.',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuDjpGs1zjWXPzbdk-Uvi03n7v-kuuCGV23pDWezuJ5JmDa3WQmMAEc4tAAiDQO4_EJaH_NTZ1ytQGRd7ibac6HJ5Y2FFyX0MDFzZaslcGZ1C3-UCLkwF0vinnllFV0RauYiyuXrtqLlp_l6VsQd7xsEVylSu5adBDAJKNP-Td0qD_dZoE-XRlek185bzz3cAxyaSn2l7jQFHm4t4g1d0BO_SUrqIT-VW8wdNxsB67iYThykQ4gNwiY',
   },
   {
     name: 'Jayanth',
-    role: 'Full Stack Developer',
-    initials: 'J',
-    gradient: 'from-primary to-accent'
-  }
-  
+    role: 'Full Stack Developer & Web Architect',
+    label: 'CO-FOUNDER',
+    bio: 'Deep experience engineering scalable cloud architecture, dynamic web platforms, and high-performance web systems.',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuAtFd2d78AWT7CafegcNR4D7bK4RiHGextR2fR85bv1ljPjsXXl4DUJUaWnlgkTjSwjbS2jITsXOY6MUr0ZxxAsuTUnxI19kqul5ObDcuu3TZZU1RWay6_IG_a09npdrYlL23npCyzBXsdC06QXe6s1PrAH2IlfvsBKC4dGtfelQ9KiXk5Sjh11iHso_60TogywpeVCrKhRuVyEAWnQRVCb2xqmm_VhlMvAN_oxfsQVAMmCaQZv0iA',
+  },
 ];
 
 const About = () => {
   return (
-    <section id="about" className="py-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        
-        {/* Left Col: Text */}
+    <section
+      className="w-full max-w-7xl mx-auto px-6 lg:px-12 py-20 border-t border-outline-variant"
+      id="about"
+    >
+      {/* Header: Two-column */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16 items-baseline">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6 }}
+          className="lg:col-span-6 space-y-3"
         >
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-primary mb-6 leading-tight">
-            Small team,<br />big impact.
+          <span className="section-label">05 / THE STUDIO</span>
+          <h2 className="section-heading">
+            Two senior operators. No juniors, no account managers.
           </h2>
-          <div className="space-y-5 text-textSecondary text-lg leading-relaxed text-justify">
-            <p>
-              We help startups launch faster with clean, conversion-focused websites and web apps. You work directly with us from planning to deployment, no middle layers, no delays.
-            </p>
-            <p>
-              Our combined expertise allows us to build 
-              products that not only look stunning but perform flawlessly across all devices.
-            </p>
-          </div>
-
-          <div className="mt-12 border-t border-border/30">
-            {[
-              { title: 'Built for Speed', desc: 'Sub-3s load times, every time' },
-              { title: 'Flawless on Every Screen', desc: 'Phone to desktop' },
-              { title: 'Found on Google', desc: 'Clean code, optimised from day one' },
-              { title: 'Grows With You', desc: 'No rebuilds as your business scales' }
-            ].map((item, index) => (
-              <div key={index} className="py-4 border-b border-border/30 text-lg flex items-baseline gap-2">
-                <span className="text-accent">•</span>
-                <div>
-                  <span className="font-display font-semibold text-primary">{item.title}</span>
-                  <span className="text-primary/60 font-display"> — </span>
-                  <span className="text-textSecondary">{item.desc}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* <div className="mt-10">
-            <h3 className="text-primary font-semibold font-display mb-4 text-lg">Core Technologies</h3>
-            <div className="flex flex-wrap gap-2.5">
-              {skills.map((skill, index) => (
-                <motion.span
-                  key={skill}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                  className="px-4 py-2 rounded-full bg-surface text-sm font-mono text-primary border border-border/50 hover:bg-white hover:border-accent/30 transition-all duration-300"
-                >
-                  {skill}
-                </motion.span>
-              ))}
-            </div>
-          </div> */}
         </motion.div>
-
-        {/* Right Col: Team */}
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
-          className="flex flex-col sm:flex-row gap-6 relative"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="lg:col-span-6"
         >
-          {team.map((member, i) => (
-            <motion.div 
-              key={i}
-              whileHover={{ y: -5 }}
-              className="flex-1 bg-surface p-8 rounded-3xl transition-all duration-300 hover:shadow-[0_8px_30px_rgba(29,61,20,0.08)]"
-            >
-              <div className={`w-24 h-24 rounded-full mb-6 bg-gradient-to-br ${member.gradient} flex items-center justify-center shadow-sm`}>
-                <span className="text-3xl font-display font-bold text-white">{member.initials}</span>
-              </div>
-              <h4 className="text-xl font-display font-bold text-primary mb-1">{member.name}</h4>
-              <p className="text-accent font-mono text-xs uppercase tracking-wider">{member.role}</p>
-            </motion.div>
-          ))}
+          <p className="font-sans text-body-lg text-on-surface-variant leading-relaxed">
+            We founded Nxora after seeing ambitious founders get trapped between bloated agencies
+            that move at a glacial pace and unvetted freelancers lacking architectural rigor. By
+            deliberately remaining a two-person studio, we personally architect, design, and code
+            every single line of your product.
+          </p>
         </motion.div>
+      </div>
 
+      {/* Team Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {team.map((member, index) => (
+          <motion.div
+            key={member.name}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.5, delay: index * 0.15 }}
+            className="bg-surface-container-lowest border border-outline-variant p-8 flex flex-col md:flex-row gap-6 items-start hover:border-secondary transition-colors duration-300"
+          >
+            <img
+              alt={`${member.name} - ${member.role}`}
+              className="w-32 h-32 md:w-40 md:h-40 object-cover border border-outline-variant flex-shrink-0"
+              src={member.image}
+            />
+            <div className="space-y-3">
+              <div>
+                <span className="font-mono text-label-mono-sm text-secondary uppercase tracking-widest">
+                  {member.label}
+                </span>
+                <h3 className="font-display text-headline-md text-on-surface">{member.name}</h3>
+                <p className="font-mono text-label-mono text-on-surface-variant">{member.role}</p>
+              </div>
+              <p className="font-sans text-body-sm text-on-surface-variant leading-relaxed">
+                {member.bio}
+              </p>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );

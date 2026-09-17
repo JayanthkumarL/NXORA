@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import MatrixLoader from './MatrixLoader';
 
 const Hero = () => {
   const container = {
@@ -7,66 +8,114 @@ const Hero = () => {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.3,
-      }
-    }
+        staggerChildren: 0.12,
+        delayChildren: 0.2,
+      },
+    },
   };
 
   const item = {
-    hidden: { y: 40, opacity: 0 },
-    show: { y: 0, opacity: 1, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
+    hidden: { y: 30, opacity: 0 },
+    show: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    },
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-16">
-      {/* Background: large rounded surface card like Trinity */}
-      <div className="absolute inset-x-4 md:inset-x-8 top-20 bottom-8 bg-surface rounded-3xl -z-10" />
-      
-      <motion.div 
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="max-w-4xl mx-auto text-center z-10"
-      >
-        {/* Availability Badge */}
-        <motion.div variants={item} className="mb-8 flex justify-center">
-          <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white border border-border/50 text-sm font-medium text-accent shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-success animate-pulse" />
-            Available for Projects ✦
+    <section className="w-full max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-28 flex flex-col justify-between">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="space-y-8 lg:col-span-8"
+        >
+          {/* Tag Line */}
+          <motion.div variants={item} className="inline-flex items-center gap-2">
+            <span className="font-mono text-label-mono tracking-widest text-secondary uppercase font-medium">
+              [ WEBSITE DESIGN &amp; BESPOKE WEB DEVELOPMENT ]
+            </span>
+          </motion.div>
+
+          {/* Main Headline */}
+          <motion.h1
+            variants={item}
+            className="font-display text-display-mobile md:text-display text-on-surface tracking-tight leading-[1.08]"
+          >
+            Engineering high-performing websites for growing businesses.
+          </motion.h1>
+
+          {/* Subheading */}
+          <motion.p
+            variants={item}
+            className="font-sans text-body-lg text-on-surface-variant max-w-3xl leading-relaxed"
+          >
+            A specialized two-person studio designing and engineering bespoke
+            websites, resilient digital flagships, and high-conversion web
+            platforms for growing businesses worldwide.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            variants={item}
+            className="pt-4 flex flex-wrap items-center gap-4"
+          >
+            <a href="#work" className="btn-primary">
+              View the work
+            </a>
+            <a href="#contact" className="btn-outline">
+              Book a call
+            </a>
+          </motion.div>
+        </motion.div>
+
+        {/* Matrix Loader to the right — desktop & larger devices only */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="hidden lg:flex lg:col-span-4 justify-center lg:justify-end items-center"
+        >
+          <div className="w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[440px] h-[420px] sm:h-[480px] lg:h-[520px] bg-transparent flex items-center justify-center relative overflow-hidden select-none pointer-events-none">
+            <MatrixLoader
+              primaryColor="#77583a"
+              glowColor="transparent"
+              shadowBlur={5}
+              fontSize={28}
+              fontWeight={500}
+              font={{ fontFamily: '"DM Mono", "Geist Mono", monospace' }}
+              gap={14}
+              columns={4}
+              digits="0101100110100101"
+              fallDuration={2.6}
+              flickerSpeed={0.6}
+              pulseSpeed={2.4}
+              staggerDelay={0.14}
+              blendMode="normal"
+            />
           </div>
         </motion.div>
-        
-        {/* Main Heading */}
-        <motion.h1 
-          variants={item}
-          className="font-display font-bold text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] tracking-tight text-primary mb-8"
-        >
-"We Don't Just Build Websites.
- We Build Your Competitive Edge."          
-        </motion.h1>
-        
-        {/* Subheading */}
-        <motion.p 
-          variants={item}
-          className="text-lg md:text-xl text-textSecondary max-w-xl mx-auto mb-12 leading-relaxed"
-        >
-         Nxora helps startups and growing businesses launch fast, high-performing websites and smart digital solutions designed to increase visibility, engagement, and conversions.
+      </div>
 
-        </motion.p>
-        
-        {/* CTAs */}
-        <motion.div variants={item} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a href="#work" className="btn-primary">
-            View Our Work
-          </a>
-          <a href="#contact" className="btn-outline">
-            Book Free Consultation
-          </a>
-        </motion.div>
-        
-        <motion.p variants={item} className="text-sm text-textMuted mt-4">
-No commitment. Just a quick discussion about your business.        </motion.p>
+      {/* Studio Baseline Strip */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.8 }}
+        className="mt-20 pt-8 border-t border-outline-variant flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-on-surface-variant"
+      >
+        <div className="flex items-center gap-6 font-mono text-label-mono uppercase tracking-wider flex-wrap">
+          <span className="text-on-surface font-medium">02 Principals</span>
+          <span className="text-secondary">•</span>
+          <span>100% Focused Attention</span>
+          <span className="text-secondary">•</span>
+          <span>Direct Founder Access</span>
+        </div>
+        <div className="font-mono text-label-mono-sm tracking-widest text-secondary uppercase">
+          LOCATIONS / BANGALORE &amp; LONDON
+        </div>
       </motion.div>
     </section>
   );

@@ -1,92 +1,99 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Palette, Smartphone, Sparkles } from 'lucide-react';
 
 const services = [
   {
-    icon: <Code2 className="w-5 h-5" />,
+    discipline: 'CORE DISCIPLINE',
+    number: '01',
     title: 'Web Development',
-    description: 'Blazing fast, responsive websites built with modern technologies like React and Next.js.',
-    tag: 'Development'
+    description:
+      'Production-grade web applications, responsive digital flagships, and high-performance custom platforms built on modern TypeScript, Next.js, and clean cloud architecture.',
+    deliverables:
+      'Full-stack web apps • Bespoke architecture • Performance optimization • SEO & Edge deploys',
   },
   {
-    icon: <Palette className="w-5 h-5" />,
+    discipline: 'EXPERIENCE DESIGN',
+    number: '02',
     title: 'UI/UX Design',
-    description: 'Intuitive and engaging user interfaces designed with a focus on conversion and aesthetics.',
-    tag: 'Design'
+    description:
+      'Editorial-grade interface systems that balance conversion rigor with refined aesthetic maturity, tailored to growing businesses and high-trust products.',
+    deliverables:
+      'Design systems • Responsive prototypes • Friction-free user onboarding • Visual hierarchy',
   },
   {
-    icon: <Smartphone className="w-5 h-5" />,
-    title: 'Mobile Apps',
-    description: 'Cross-platform mobile applications that deliver native-like experiences on all devices.',
-    tag: 'Mobile'
+    discipline: 'DIGITAL COMMERCE',
+    number: '03',
+    title: 'E-commerce & Business Websites',
+    description:
+      'Tailored business websites and bespoke online stores architected to turn passive traffic into loyal paying customers with speed and clarity.',
+    deliverables:
+      'Bespoke Shopify & Headless setups • High-conversion checkout funnels • CMS integration • Catalog architecture',
   },
   {
-    icon: <Sparkles className="w-5 h-5" />,
+    discipline: 'POSITIONING',
+    number: '04',
     title: 'Brand Identity',
-    description: 'Cohesive branding packages that help your business stand out in a crowded market.',
-    tag: 'Branding'
-  }
+    description:
+      'Cohesive visual guidelines, typography pairings, and digital design language that command authority in institutional and global markets.',
+    deliverables:
+      'Logo marks • Art direction • Brand guidelines • Monograph-style pitch collateral',
+  },
 ];
 
 const Services = () => {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15 }
-    }
-  };
-
-  const item = {
-    hidden: { y: 30, opacity: 0 },
-    show: { y: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } }
-  };
-
   return (
-    <section id="services" className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+    <section
+      className="w-full max-w-7xl mx-auto px-6 lg:px-12 py-20 border-t border-outline-variant"
+      id="services"
+    >
+      {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.6 }}
-        className="mb-16 text-center"
+        className="space-y-3 mb-16"
       >
-        <h2 className="font-display text-4xl md:text-5xl font-bold text-primary mb-4">
-Solutions designed to grow your business
+        <span className="section-label">03 / CAPABILITIES</span>
+        <h2 className="section-heading">
+          Built for founders who value depth over headcount.
         </h2>
-        <p className="text-textSecondary text-lg max-w-2xl mx-auto">
-          We offer a range of services tailored to bring your vision to life.
-        </p>
       </motion.div>
 
-      <motion.div 
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-50px" }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-6"
-      >
+      {/* Services Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {services.map((service, index) => (
-          <motion.div key={index} variants={item} className="h-full">
-            <div className="bg-surface p-8 md:p-10 rounded-3xl h-full flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(29,61,20,0.08)] group">
-              {/* Tag */}
-              <span className="inline-flex items-center gap-2 text-xs font-medium text-accent bg-white border border-border/50 px-3.5 py-1.5 rounded-full w-fit mb-6">
-                <span className="text-primary">{service.icon}</span>
-                {service.tag}
+          <motion.div
+            key={service.number}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="card p-8 lg:p-10 flex flex-col justify-between"
+          >
+            <div className="space-y-6">
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-label-mono text-secondary uppercase tracking-widest">
+                  {service.discipline}
+                </span>
+                <span className="font-mono text-label-mono-sm text-on-surface px-2 py-0.5 border border-outline-variant">
+                  {service.number}
+                </span>
+              </div>
+              <h3 className="font-display text-headline-lg text-on-surface">{service.title}</h3>
+              <p className="font-sans text-body-md text-on-surface-variant leading-relaxed">
+                {service.description}
+              </p>
+            </div>
+            <div className="mt-8 pt-6 border-t border-outline-variant space-y-2">
+              <span className="font-mono text-label-mono-sm text-secondary uppercase tracking-wider block">
+                KEY DELIVERABLES:
               </span>
-              
-              <h3 className="text-2xl font-bold font-display text-primary mb-3">{service.title}</h3>
-              <p className="text-textSecondary leading-relaxed flex-grow mb-6">{service.description}</p>
-              
-              <a href="#contact" className="text-sm font-semibold text-primary hover:text-accent flex items-center gap-2 transition-colors mt-auto w-fit group/link">
-                Learn More 
-                <span className="transition-transform group-hover/link:translate-x-1">→</span>
-              </a>
+              <p className="font-sans text-body-sm text-on-surface">{service.deliverables}</p>
             </div>
           </motion.div>
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 };

@@ -5,7 +5,7 @@ import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Process from './components/Process';
 import Services from './components/Services';
-import Testimonials from './components/Testimonials';
+// import Testimonials from './components/Testimonials';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -14,12 +14,7 @@ import SmoothCursor from './components/SmoothCursor';
 
 function App() {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      className="min-h-screen bg-surface"
-    >
+    <div className="min-h-screen bg-surface">
       <SmoothCursor size={28} color="#111111" stiffness={500} damping={35} />
       <Navbar />
       <main className="w-full pt-20 bg-surface min-h-screen">
@@ -28,7 +23,7 @@ function App() {
           <Projects />
           <Process />
           <Services />
-          <Testimonials />
+          {/* <Testimonials /> */}
           <About />
           <Contact />
         </div>
@@ -47,7 +42,7 @@ function App() {
           />
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 

@@ -5,9 +5,9 @@ const services = [
   {
     discipline: 'CORE DISCIPLINE',
     number: '01',
-    title: 'Web Development',
+    title: 'AI Website Development',
     description:
-      'Production-grade web applications, responsive digital flagships, and high-performance custom platforms built on modern TypeScript, Next.js, and clean cloud architecture.',
+      'Production-grade AI-powered web applications, responsive digital flagships, and high-performance custom platforms built on modern TypeScript, Next.js, and clean cloud architecture.',
     deliverables:
       'Full-stack web apps • Bespoke architecture • Performance optimization • SEO & Edge deploys',
   },

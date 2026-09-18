@@ -40,15 +40,15 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-surface/75 backdrop-blur-xl border-b border-outline-variant/35 shadow-[0_4px_30px_rgba(0,0,0,0.04)]'
-          : 'bg-surface/50 backdrop-blur-lg border-b border-outline-variant/15'
+          ? 'bg-white/45 backdrop-blur-2xl border-b border-white/60 shadow-[0_8px_32px_0_rgba(0,0,0,0.06),inset_0_1px_1px_0_rgba(255,255,255,0.8)]'
+          : 'bg-white/30 backdrop-blur-xl border-b border-white/40 shadow-[0_4px_24px_0_rgba(0,0,0,0.03),inset_0_1px_1px_0_rgba(255,255,255,0.6)]'
       }`}
       style={{
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
+        backdropFilter: 'blur(28px) saturate(190%)',
+        WebkitBackdropFilter: 'blur(28px) saturate(190%)',
       }}
     >
-      <div className="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
+      <div className="h-20 max-w-[1536px] mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between">
         {/* Left: Logo + Availability */}
         <div className="flex items-center gap-6">
           <a className="flex items-center gap-3" href="#">
@@ -91,10 +91,10 @@ const Navbar = () => {
             ))}
           </nav>
 
-          <div className="flex items-center gap-4 pl-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <EyeFollowButton
               href="#contact"
-              className="hidden sm:inline-flex items-center gap-2.5 font-mono text-label-mono tracking-widest uppercase px-5 py-2.5 rounded-lg bg-black text-white hover:bg-secondary transition-all duration-200 shadow-md hover:shadow-lg border border-black/80"
+              className="hidden sm:inline-flex items-center gap-2.5 font-mono text-label-mono tracking-widest uppercase px-5 py-2.5 rounded-lg bg-secondary text-white hover:bg-secondary-hover transition-all duration-200 shadow-md hover:shadow-lg border border-secondary"
               eyeSize={16}
               pupilSize={5}
               eyeSpacing={3}
@@ -104,27 +104,29 @@ const Navbar = () => {
               Book a call
             </EyeFollowButton>
 
-            {/* Mobile Hamburger */}
+            {/* Professional Editorial Mobile Hamburger Button */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden flex flex-col gap-1.5 p-2 relative w-8 h-8 items-center justify-center rounded-lg hover:bg-surface-container/60 transition-colors"
+              className="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded-lg border border-black/10 bg-white/70 backdrop-blur-md shadow-xs hover:border-secondary/40 hover:bg-white transition-all duration-200 focus:outline-none"
               aria-label="Toggle menu"
             >
-              <span
-                className={`w-6 h-0.5 bg-on-surface transition-all duration-300 absolute ${
-                  mobileOpen ? 'rotate-45' : '-translate-y-1.5'
-                }`}
-              />
-              <span
-                className={`w-6 h-0.5 bg-on-surface transition-all duration-300 ${
-                  mobileOpen ? 'opacity-0' : 'opacity-100'
-                }`}
-              />
-              <span
-                className={`w-6 h-0.5 bg-on-surface transition-all duration-300 absolute ${
-                  mobileOpen ? '-rotate-45' : 'translate-y-1.5'
-                }`}
-              />
+              <div className="w-5 h-4 relative flex flex-col justify-between items-center">
+                <span
+                  className={`w-5 h-0.5 bg-on-surface rounded-full transition-all duration-300 transform origin-center ${
+                    mobileOpen ? 'rotate-45 translate-y-[7px] bg-secondary' : ''
+                  }`}
+                />
+                <span
+                  className={`w-3.5 h-0.5 bg-on-surface rounded-full transition-all duration-200 self-start ${
+                    mobileOpen ? 'opacity-0 translate-x-2' : 'opacity-100'
+                  }`}
+                />
+                <span
+                  className={`w-5 h-0.5 bg-on-surface rounded-full transition-all duration-300 transform origin-center ${
+                    mobileOpen ? '-rotate-45 -translate-y-[7px] bg-secondary' : ''
+                  }`}
+                />
+              </div>
             </button>
           </div>
         </div>
@@ -138,10 +140,10 @@ const Navbar = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="md:hidden bg-surface/80 backdrop-blur-2xl border-t border-b border-outline-variant/30 shadow-[0_24px_48px_rgba(0,0,0,0.08)] overflow-hidden"
+            className="md:hidden bg-white/60 backdrop-blur-2xl border-t border-b border-white/50 shadow-[0_24px_48px_rgba(0,0,0,0.08),inset_0_1px_1px_0_rgba(255,255,255,0.7)] overflow-hidden"
             style={{
-              backdropFilter: 'blur(24px)',
-              WebkitBackdropFilter: 'blur(24px)',
+              backdropFilter: 'blur(30px) saturate(190%)',
+              WebkitBackdropFilter: 'blur(30px) saturate(190%)',
             }}
           >
             <div className="px-6 py-8 flex flex-col gap-1">

@@ -57,8 +57,7 @@ const phases = [
     headline: '03 — Build & Engineer',
     description:
       'Rapid two-week production sprints with direct Slack/Telegram access, continuous staging deploys, and performance-first engineering.',
-    timeline: 'TIMELINE: 2–4 WEEKS',
-    badge: '2–4 WEEKS',
+    timeline: 'TIMELINE: 10-15 DAYS',
     deliverables: [
       'Production React/Vite codebase',
       'Continuous staging deployments',
@@ -81,12 +80,12 @@ const phases = [
     headline: '04 — Launch & Support',
     description:
       'Seamless production cutover, DNS & CDN optimization, team onboarding, comprehensive documentation, and a 30-day post-launch warranty.',
-    timeline: 'TIMELINE: 30-DAY WARRANTY',
-    badge: '30-DAY WARRANTY',
+    timeline: 'TIMELINE: 15-DAY WARRANTY',
+   
     deliverables: [
       'Zero-downtime DNS & CDN launch',
       'Lighthouse & SEO verification',
-      '30-day post-launch guarantee',
+      '15-day post-launch guarantee',
     ],
     bgGradient: 'from-[#1b1916]/95 via-[#25201b]/90 to-[#131110]/95',
     icon: (

@@ -40,9 +40,9 @@
 }
 
 @layer components {
-  /* Editorial primary button — dark fill, mono uppercase */
+  /* Editorial primary button — secondary fill, lighter tone on hover */
   .btn-primary {
-    @apply px-6 py-3.5 bg-primary-container text-surface font-mono text-label-mono uppercase tracking-widest hover:bg-secondary transition-colors duration-200 inline-flex items-center justify-center;
+    @apply px-6 py-3.5 bg-secondary text-surface font-mono text-label-mono uppercase tracking-widest hover:bg-secondary-hover transition-colors duration-200 inline-flex items-center justify-center;
   }
 
   /* Editorial outline button */

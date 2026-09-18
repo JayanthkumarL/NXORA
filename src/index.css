@@ -21,6 +21,10 @@
     @apply bg-surface text-on-surface font-sans;
   }
 
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+
   /* Hide scrollbar across browsers */
   ::-webkit-scrollbar {
     display: none;

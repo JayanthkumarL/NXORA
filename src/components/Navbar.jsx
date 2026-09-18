@@ -30,8 +30,74 @@ const Navbar = () => {
     } else {
       document.body.style.overflow = '';
     }
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [mobileOpen]);
+
+  // Close mobile menu on screen resize to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768 && mobileOpen) {
+        setMobileOpen(false);
+        document.body.style.overflow = '';
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [mobileOpen]);
+
+  // Scroll spy to highlight active section
+  useEffect(() => {
+    const sectionIds = ['work', 'services', 'process', 'about', 'contact'];
+    const handleScrollSpy = () => {
+      const scrollPos = window.scrollY + 120;
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sectionIds[i]);
+        if (el && el.offsetTop <= scrollPos) {
+          setActiveSection(sectionIds[i]);
+          break;
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScrollSpy, { passive: true });
+    handleScrollSpy();
+    return () => window.removeEventListener('scroll', handleScrollSpy);
+  }, []);
+
+  // Robust smooth scroll handler for both mobile and desktop
+  const handleNavClick = (e, href) => {
+    if (e) e.preventDefault();
+    setMobileOpen(false);
+    document.body.style.overflow = '';
+
+    if (href === '#' || !href) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setActiveSection('work');
+      return;
+    }
+
+    const targetId = href.replace('#', '');
+    setActiveSection(targetId.toLowerCase());
+
+    // Small delay ensures body overflow is unlocked before scrolling
+    setTimeout(() => {
+      const element = document.getElementById(targetId);
+      if (element) {
+        const navHeight = 80;
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = element.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = Math.max(0, elementPosition - navHeight);
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+        });
+        window.history.pushState(null, '', href);
+      }
+    }, 50);
+  };
 
   return (
     <motion.header
@@ -49,9 +115,13 @@ const Navbar = () => {
       }}
     >
       <div className="h-20 max-w-[1536px] mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between">
-        {/* Left: Logo + Availability */}
+        {/* Left: Logo */}
         <div className="flex items-center gap-6">
-          <a className="flex items-center gap-3" href="#">
+          <a
+            className="flex items-center gap-3 cursor-pointer"
+            href="#"
+            onClick={(e) => handleNavClick(e, '#')}
+          >
             <img
               alt="Nxora Logo"
               className="h-8 w-auto object-contain"
@@ -61,14 +131,6 @@ const Navbar = () => {
               Studio
             </span>
           </a>
-
-          {/* Availability Badge — Desktop only */}
-          {/* <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container/70 backdrop-blur-sm border border-outline-variant/30">
-            <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-            <span className="font-mono text-label-mono-sm text-secondary font-medium tracking-wider uppercase">
-              Available for Q2/Q3 Projects
-            </span>
-          </div> */}
         </div>
 
         {/* Right: Nav + CTA */}
@@ -79,12 +141,12 @@ const Navbar = () => {
               <a
                 key={link.label}
                 href={link.href}
-                className={`tracking-wide transition-colors py-1 ${
+                className={`tracking-wide transition-colors py-1 cursor-pointer ${
                   activeSection === link.label.toLowerCase()
                     ? 'text-on-surface font-medium border-b border-secondary'
                     : 'font-sans text-body-sm text-on-surface-variant hover:text-on-surface'
                 }`}
-                onClick={() => setActiveSection(link.label.toLowerCase())}
+                onClick={(e) => handleNavClick(e, link.href)}
               >
                 {link.label}
               </a>
@@ -94,6 +156,7 @@ const Navbar = () => {
           <div className="flex items-center gap-3 sm:gap-4">
             <EyeFollowButton
               href="#contact"
+              onClick={(e) => handleNavClick(e, '#contact')}
               className="hidden sm:inline-flex items-center gap-2.5 font-mono text-label-mono tracking-widest uppercase px-5 py-2.5 rounded-lg bg-secondary text-white hover:bg-secondary-hover transition-all duration-200 shadow-md hover:shadow-lg border border-secondary"
               eyeSize={16}
               pupilSize={5}
@@ -107,8 +170,9 @@ const Navbar = () => {
             {/* Professional Editorial Mobile Hamburger Button */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded-lg border border-black/10 bg-white/70 backdrop-blur-md shadow-xs hover:border-secondary/40 hover:bg-white transition-all duration-200 focus:outline-none"
+              className="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded-lg border border-black/10 bg-white/70 backdrop-blur-md shadow-xs hover:border-secondary/40 hover:bg-white transition-all duration-200 focus:outline-none touch-manipulation"
               aria-label="Toggle menu"
+              aria-expanded={mobileOpen}
             >
               <div className="w-5 h-4 relative flex flex-col justify-between items-center">
                 <span
@@ -140,40 +204,38 @@ const Navbar = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="md:hidden bg-white/60 backdrop-blur-2xl border-t border-b border-white/50 shadow-[0_24px_48px_rgba(0,0,0,0.08),inset_0_1px_1px_0_rgba(255,255,255,0.7)] overflow-hidden"
+            className="md:hidden bg-white/85 backdrop-blur-2xl border-t border-b border-white/50 shadow-[0_24px_48px_rgba(0,0,0,0.08),inset_0_1px_1px_0_rgba(255,255,255,0.7)] max-h-[calc(100vh-5rem)] overflow-y-auto"
             style={{
               backdropFilter: 'blur(30px) saturate(190%)',
               WebkitBackdropFilter: 'blur(30px) saturate(190%)',
             }}
           >
-            <div className="px-6 py-8 flex flex-col gap-1">
+            <div className="px-6 py-6 flex flex-col gap-1">
               {navLinks.map((link, i) => (
-                <motion.a
+                <a
                   key={link.label}
                   href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  initial={{ opacity: 0, x: -16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.25, delay: i * 0.04 }}
-                  className="text-lg font-medium text-on-surface hover:text-secondary transition-colors py-3.5 border-b border-outline-variant/25 flex items-center justify-between group"
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`text-lg font-medium transition-colors py-3.5 border-b border-outline-variant/25 flex items-center justify-between cursor-pointer touch-manipulation ${
+                    activeSection === link.label.toLowerCase()
+                      ? 'text-secondary font-semibold'
+                      : 'text-on-surface hover:text-secondary'
+                  }`}
                 >
                   <span>{link.label}</span>
-                  <span className="font-mono text-label-mono-sm text-secondary opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="font-mono text-label-mono-sm text-secondary">
                     0{i + 1}
                   </span>
-                </motion.a>
+                </a>
               ))}
               <div className="pt-4">
-                <EyeFollowButton
+                <a
                   href="#contact"
-                  className="btn-primary text-center inline-flex items-center justify-center gap-3 w-full py-4 shadow-sm"
-                  onClick={() => setMobileOpen(false)}
-                  eyeSize={18}
-                  pupilSize={5.5}
-                  eyeSpacing={3}
+                  className="btn-primary text-center flex items-center justify-center gap-3 w-full py-4 shadow-sm touch-manipulation"
+                  onClick={(e) => handleNavClick(e, '#contact')}
                 >
                   Book a call
-                </EyeFollowButton>
+                </a>
               </div>
             </div>
           </motion.div>

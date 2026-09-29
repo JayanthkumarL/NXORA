@@ -37,7 +37,7 @@ const Footer = () => {
                   className="font-mono text-label-mono text-on-surface hover:text-secondary transition-colors inline-flex items-center gap-2"
                 >
                   <span className="text-on-surface-variant uppercase text-label-mono-sm">Phone:</span>
-                  <span>+91 7676111732</span>
+                  <span>+91 8431084592</span>
                 </a>
               </div>
             </div>

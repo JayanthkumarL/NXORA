@@ -10,20 +10,27 @@ const Footer = () => {
           {/* Col 1: Studio Info */}
           <div className="md:col-span-7 lg:col-span-8 flex flex-col justify-between">
             <div className="space-y-4">
-              <span className="font-display text-headline-md text-on-surface font-normal block">
-                Nxora Studio
-              </span>
+              <div className="flex items-center gap-3">
+                <img
+                  src="/img/apexlance-logo.png"
+                  alt="ApexLance Studio"
+                  className="h-8 w-auto object-contain"
+                />
+                <span className="font-mono text-label-mono tracking-widest text-on-surface uppercase">
+                  Studio
+                </span>
+              </div>
               <p className="font-sans text-body-md text-on-surface-variant max-w-md">
                 Website design and full-stack development crafting bespoke digital flagships
                 and high-conversion web platforms for growing businesses.
               </p>
               <div className="pt-2 flex flex-wrap items-center gap-y-2 gap-x-6">
                 <a
-                  href="mailto:nxoracreation@gmail.com"
+                  href="mailto:apexlancecreations@gmail.com"
                   className="font-mono text-label-mono text-on-surface hover:text-secondary transition-colors inline-flex items-center gap-2"
                 >
                   <span className="text-on-surface-variant uppercase text-label-mono-sm">Email:</span>
-                  <span>nxoracreation@gmail.com</span>
+                  <span>apexlancecreations@gmail.com</span>
                 </a>
                 <a
                   href="tel:+917676111732"
@@ -46,7 +53,7 @@ const Footer = () => {
                 {[
                   { label: 'Selected Work', href: '#work' },
                   { label: 'Capabilities & Services', href: '#services' },
-                  { label: 'The Nxora Process', href: '#process' },
+                  { label: 'The ApexLance Process', href: '#process' },
                   { label: 'Studio Manifesto', href: '#about' },
                   { label: 'Initiate Dialogue', href: '#contact' },
                 ].map((link) => (
@@ -67,7 +74,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-outline-variant flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="font-mono text-label-mono-sm text-on-surface-variant tracking-wider uppercase">
-            © {new Date().getFullYear()} NXORA STUDIO. STRICT CONFIDENTIALITY OBSERVED.
+            © {new Date().getFullYear()} APEXLANCE STUDIO. STRICT CONFIDENTIALITY OBSERVED.
           </div>
           <div className="font-mono text-label-mono-sm text-on-surface-variant tracking-wider uppercase">
             Connect-Work-Deliver

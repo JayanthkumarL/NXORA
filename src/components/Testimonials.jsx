@@ -32,7 +32,7 @@
 //         className="bg-surface-container-lowest border border-outline-variant p-10 lg:p-16"
 //       >
 //         <blockquote className="font-display text-headline-lg text-on-surface max-w-4xl leading-snug">
-//           "Nxora felt less like an outsourced agency and more like having two senior technical
+//           "ApexLance felt less like an outsourced agency and more like having two senior technical
 //           co-founders join our sprint. They rebuilt our core customer web platform in three weeks
 //           flat."
 //         </blockquote>

@@ -34,8 +34,8 @@ function App() {
       <div className="fixed bottom-8 right-8 sm:bottom-10 sm:right-10 md:bottom-12 md:right-12 z-50 pointer-events-none flex items-center justify-center">
         <div className="pointer-events-auto">
           <ParallaxSocialFAB
-            shareText="NXORA Studio — Engineering high-performing websites for growing businesses"
-            emailSubject="NXORA Studio — Inquiry & Collaboration"
+            shareText="ApexLance Studio — Engineering high-performing websites for growing businesses"
+            emailSubject="ApexLance Studio — Inquiry & Collaboration"
             fabIcon="Plus"
             fabOpenOnHover={true}
             pulseEnabled={true}

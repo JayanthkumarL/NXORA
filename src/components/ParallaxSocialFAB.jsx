@@ -454,8 +454,8 @@ export default function ParallaxSocialFAB(props) {
   const {
     style,
     shareUrl,
-    shareText = 'Check out NXORA Studio — Engineering high-performing websites for growing businesses:',
-    emailSubject = 'NXORA Studio — Web Development & Design',
+    shareText = 'Check out ApexLance Studio — Engineering high-performing websites for growing businesses:',
+    emailSubject = 'ApexLance Studio — Web Development & Design',
     showTwitter = true,
     showLinkedin = true,
     showFacebook = false,
@@ -724,7 +724,7 @@ export default function ParallaxSocialFAB(props) {
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.92 }}
         transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-        aria-label="Share NXORA Studio"
+        aria-label="Share ApexLance Studio"
         style={{
           position: 'absolute',
           width: effectiveFabSize,

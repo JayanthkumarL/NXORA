@@ -45,7 +45,7 @@ const About = () => {
           className="lg:col-span-6"
         >
           <p className="font-sans text-body-lg text-on-surface-variant leading-relaxed">
-           "We founded Nxora after seeing ambitious founders get trapped between bloated agencies that move at a glacial pace and unvetted freelancers lacking architectural rigor. You work directly with the people building your product — no hand-offs, no account managers, no juniors learning on your dime."
+           "We founded ApexLance after seeing ambitious founders get trapped between bloated agencies that move at a glacial pace and unvetted freelancers lacking architectural rigor. You work directly with the people building your product — no hand-offs, no account managers, no juniors learning on your dime."
           </p>
         </motion.div>
       </div>

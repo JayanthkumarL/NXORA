@@ -118,16 +118,17 @@ const Navbar = () => {
         {/* Left: Logo */}
         <div className="flex items-center gap-6">
           <a
-            className="flex items-center gap-3 cursor-pointer"
+            className="flex items-center gap-3 cursor-pointer group"
             href="#"
             onClick={(e) => handleNavClick(e, '#')}
+            aria-label="ApexLance Studio Home"
           >
             <img
-              alt="Nxora Logo"
-              className="h-8 w-auto object-contain"
-              src="/img/logo.png"
+              alt="ApexLance Studio Logo"
+              className="h-7 sm:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+              src="/img/apexlance-logo.png"
             />
-            <span className="font-mono text-label-mono tracking-widest text-on-surface uppercase">
+            <span className="font-mono text-label-mono tracking-widest text-on-surface uppercase hidden sm:inline-block">
               Studio
             </span>
           </a>

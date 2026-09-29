@@ -128,9 +128,9 @@ const Navbar = () => {
               className="h-7 sm:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
               src="/img/apexlance-logo.png"
             />
-            <span className="font-mono text-label-mono tracking-widest text-on-surface uppercase hidden sm:inline-block">
+            {/* <span className="font-mono text-label-mono tracking-widest text-on-surface uppercase hidden sm:inline-block">
               Studio
-            </span>
+            </span> */}
           </a>
         </div>
 

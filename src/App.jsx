@@ -47,6 +47,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/case-study/:slug" element={<CaseStudyLayout />} />
+        <Route path="*" element={<HomePage />} />
       </Routes>
 
       <Footer />

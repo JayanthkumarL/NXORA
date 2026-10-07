@@ -107,7 +107,7 @@ export const caseStudies = [
     caseNumber: '02',
     category: 'Sports Platform & Event Management',
     title: 'Karnataka Sports Foundation',
-    headline: 'A Grassroots Sports Management Platform with Self-Serve Admin Portal',
+    headline: ' karnataka sports foundation Platform with Self-Serve Admin Portal',
     description:
       'A digital hub built for Karnataka Sports Foundation to organize sports activities, Taluk, District, and State level tournaments, dynamic registration forms, and full self-serve admin control.',
     tags: ['React', 'Firebase Auth', 'Firestore', 'Tailwind CSS', 'Cloudinary'],

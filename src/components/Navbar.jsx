@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate, useLocation } from 'react-router-dom';
 import EyeFollowButton from './EyeFollowButton';
 
 const navLinks = [
@@ -14,6 +15,9 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('work');
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,13 +76,23 @@ const Navbar = () => {
     document.body.style.overflow = '';
 
     if (href === '#' || !href) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (!isHomePage) {
+        navigate('/');
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
       setActiveSection('work');
       return;
     }
 
     const targetId = href.replace('#', '');
     setActiveSection(targetId.toLowerCase());
+
+    // If not on the home page, navigate to home with hash
+    if (!isHomePage) {
+      navigate('/' + href);
+      return;
+    }
 
     // Small delay ensures body overflow is unlocked before scrolling
     setTimeout(() => {

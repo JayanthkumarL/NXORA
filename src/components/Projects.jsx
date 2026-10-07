@@ -1,104 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const caseStudies = [
-  {
-    id: 1,
-    caseNumber: '01',
-    category: 'E-Commerce & Digital Commerce Platform',
-    title: 'Mahadeshwara Agro Nursery Garden',
-    description:
-      'A full-catalog e-commerce site for a plant nursery, featuring 120+ product listings across 6 categories with a zero-friction WhatsApp ordering flow — no cart, no checkout, just a direct line from browsing to order.',
-    tags: ['Next.js', 'Firebase', 'Netlify', 'WhatsApp API'],
-    link: 'https://mahadeshwaraagrofarm.in',
-    images: [
-      {
-        src: '/img/Case 1/Screenshot 2026-09-18 163143.png',
-        alt: 'Mahadeshwara Agro Nursery Garden - Screenshot 1',
-      },
-      {
-        src: '/img/Case 1/Screenshot 2026-09-18 163152.png',
-        alt: 'Mahadeshwara Agro Nursery Garden - Screenshot 2',
-      },
-      {
-        src: '/img/Case 1/Screenshot 2026-09-18 163248.png',
-        alt: 'Mahadeshwara Agro Nursery Garden - Screenshot 3',
-      },
-      {
-        src: '/img/Case 1/Screenshot 2026-09-18 163312.png',
-        alt: 'Mahadeshwara Agro Nursery Garden - Screenshot 4',
-      },
-      {
-        src: '/img/Case 1/Screenshot 2026-09-18 163338.png',
-        alt: 'Mahadeshwara Agro Nursery Garden - Screenshot 5',
-      },
-    ],
-  },
-  {
-    id: 2,
-    caseNumber: '02',
-    category: 'Digital Hub & Program Management',
-    title: 'Karnataka Sports Foundation',
-    description:
-      'A high-performance digital hub for athlete registration and grassroots sports program management across 20+ districts.',
-    tags: ['React', 'Firebase', 'Netlify'],
-    link: 'https://sportskarnataka.com/',
-    images: [
-      {
-        src: '/img/Case 2/Screenshot 2026-09-18 164320.png',
-        alt: 'Karnataka Sports Foundation - Screenshot 1',
-      },
-      {
-        src: '/img/Case 2/Screenshot 2026-09-18 164355.png',
-        alt: 'Karnataka Sports Foundation - Screenshot 2',
-      },
-      {
-        src: '/img/Case 2/Screenshot 2026-09-18 164403.png',
-        alt: 'Karnataka Sports Foundation - Screenshot 3',
-      },
-    ],
-  },
-  {
-    id: 3,
-    caseNumber: '03',
-    category: 'Photography Portfolio',
-    title: 'Timeless Moments',
-    description:
-      'A premium wedding photography portfolio site designed to showcase high-resolution imagery and capture artistic milestones.',
-    tags: ['React', 'Vercel', 'Tailwind CSS'],
-    link: 'https://photography-phi-nine.vercel.app/',
-    images: [
-      {
-        src: '/img/Case 3/Screenshot 2026-09-18 164622.png',
-        alt: 'Timeless Moments - Screenshot 1',
-      },
-      {
-        src: '/img/Case 3/Screenshot 2026-09-18 164634.png',
-        alt: 'Timeless Moments - Screenshot 2',
-      },
-      {
-        src: '/img/Case 3/Screenshot 2026-09-18 164647.png',
-        alt: 'Timeless Moments - Screenshot 3',
-      },
-      {
-        src: '/img/Case 3/Screenshot 2026-09-18 164657.png',
-        alt: 'Timeless Moments - Screenshot 4',
-      },
-      {
-        src: '/img/Case 3/Screenshot 2026-09-18 164710.png',
-        alt: 'Timeless Moments - Screenshot 5',
-      },
-      {
-        src: '/img/Case 3/Screenshot 2026-09-18 164729.png',
-        alt: 'Timeless Moments - Screenshot 6',
-      },
-      {
-        src: '/img/Case 3/Screenshot 2026-09-18 164744.png',
-        alt: 'Timeless Moments - Screenshot 7',
-      },
-    ],
-  },
-];
+import { Link } from 'react-router-dom';
+import { caseStudies } from '../data/caseStudies';
 
 /* ── Carousel Component ────────────────────────────────────────────────── */
 
@@ -400,14 +303,38 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
-                <div className="pt-4">
+
+                {/* Action links */}
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-4">
+                  {/* Read the case study link — only show if story exists */}
+                  {study.story && (
+                    <Link
+                      to={`/case-study/${study.slug}`}
+                      className="inline-flex items-center gap-2 font-mono text-label-mono uppercase tracking-widest text-on-surface border-b border-secondary pb-1 hover:text-secondary transition-colors group"
+                    >
+                      Read the case study
+                      <svg
+                        className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  )}
+
+                  {/* View live site */}
                   <a
-                    className="inline-flex items-center gap-2 font-mono text-label-mono uppercase tracking-widest text-on-surface border-b border-secondary pb-1 hover:text-secondary transition-colors"
+                    className="inline-flex items-center gap-2 font-mono text-label-mono uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors"
                     href={study.link}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    View live site →
+                    View live site
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 17L17 7M17 7H7M17 7v10" />
+                    </svg>
                   </a>
                 </div>
               </div>

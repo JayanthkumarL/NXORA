@@ -33,7 +33,7 @@ const Footer = () => {
                   <span>apexlancecreations@gmail.com</span>
                 </a>
                 <a
-                  href="Phone:+918431084592"
+                  href="tel:+918431084592"
                   className="font-mono text-label-mono text-on-surface hover:text-secondary transition-colors inline-flex items-center gap-2"
                 >
                   <span className="text-on-surface-variant uppercase text-label-mono-sm">Phone:</span>

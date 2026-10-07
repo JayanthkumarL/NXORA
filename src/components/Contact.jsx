@@ -59,18 +59,18 @@ const Contact = () => {
           <div className="bg-surface-container-lowest border border-outline-variant p-8 lg:p-12 space-y-6">
             <div className="space-y-4">
               <a
-                href="mailto:apexlancecreation@gmail.com"
+                href="mailto:apexlancecreations@gmail.com"
                 className="w-full py-4 px-6 bg-surface-container-low border border-outline-variant hover:border-secondary hover:bg-surface-container transition-colors duration-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 font-mono text-label-mono text-on-surface hover:text-secondary"
               >
                 <span className="text-on-surface-variant uppercase text-label-mono-sm">Email</span>
                 <span className="tracking-wide">apexlancecreations@gmail.com</span>
               </a>
               <a
-                href="tel:+917676111732"
+                href="tel:+918431084592"
                 className="w-full py-4 px-6 bg-surface-container-low border border-outline-variant hover:border-secondary hover:bg-surface-container transition-colors duration-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 font-mono text-label-mono text-on-surface hover:text-secondary"
               >
                 <span className="text-on-surface-variant uppercase text-label-mono-sm">Phone</span>
-                <span className="tracking-wide">+91 7676111732</span>
+                <span className="tracking-wide">+91 8431084592</span>
               </a>
             </div>
 

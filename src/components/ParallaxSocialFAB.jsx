@@ -194,8 +194,7 @@ const PLATFORMS = {
       </svg>
     ),
     color: '#000000',
-    getUrl: (url, text) =>
-      `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`,
+    getUrl: (_url, _text, _subject, customUrl) => customUrl || 'https://x.com/apexlancebuild',
   },
   linkedin: {
     label: 'LinkedIn',
@@ -205,8 +204,7 @@ const PLATFORMS = {
       </svg>
     ),
     color: '#0A66C2',
-    getUrl: (url) =>
-      `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+    getUrl: (_url, _text, _subject, customUrl) => customUrl || 'https://www.linkedin.com/in/apex-lance/?isSelfProfile=true',
   },
   facebook: {
     label: 'Facebook',
@@ -226,7 +224,7 @@ const PLATFORMS = {
       </svg>
     ),
     color: '#E1306C',
-    getUrl: (_url, _text, _subject, customUrl) => customUrl || 'https://www.instagram.com/',
+    getUrl: (_url, _text, _subject, customUrl) => customUrl || 'https://www.instagram.com/apexlance.build/',
   },
   whatsapp: {
     label: 'WhatsApp',
@@ -316,6 +314,8 @@ function NavItem({
   shareUrl,
   shareText,
   emailSubject,
+  twitterUrl,
+  linkedinUrl,
   instagramUrl,
   tooltipEnabled,
   tooltipFontSize,
@@ -356,7 +356,11 @@ function NavItem({
     if (platformKey === 'copy') {
       onCopy();
     } else {
-      const url = platform.getUrl(shareUrl, shareText, emailSubject, instagramUrl);
+      let customUrl = null;
+      if (platformKey === 'twitter') customUrl = twitterUrl;
+      if (platformKey === 'linkedin') customUrl = linkedinUrl;
+      if (platformKey === 'instagram') customUrl = instagramUrl;
+      const url = platform.getUrl(shareUrl, shareText, emailSubject, customUrl);
       if (url) window.open(url, '_blank', 'noopener,noreferrer');
     }
   };
@@ -494,7 +498,9 @@ export default function ParallaxSocialFAB(props) {
     depthWhatsapp = 0.9,
     depthEmail = 0.65,
     depthCopy = 0.8,
-    instagramUrl,
+    twitterUrl = 'https://x.com/apexlancebuild',
+    linkedinUrl = 'https://www.linkedin.com/in/apex-lance/?isSelfProfile=true',
+    instagramUrl = 'https://www.instagram.com/apexlance.build/',
     fabSize = 54,
     fabColor = '#111111',
     fabIconColor = '#ffffff',
@@ -719,6 +725,8 @@ export default function ParallaxSocialFAB(props) {
           shareUrl={shareUrl || (typeof window !== 'undefined' ? window.location.href : '')}
           shareText={shareText}
           emailSubject={emailSubject}
+          twitterUrl={twitterUrl}
+          linkedinUrl={linkedinUrl}
           instagramUrl={instagramUrl}
           tooltipEnabled={tooltipEnabled}
           tooltipFontSize={tooltipFontSize}

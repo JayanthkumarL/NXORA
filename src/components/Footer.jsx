@@ -16,9 +16,9 @@ const Footer = () => {
                   alt="ApexLance Studio"
                   className="h-8 w-auto object-contain"
                 />
-                <span className="font-mono text-label-mono tracking-widest text-on-surface uppercase">
+                {/* <span className="font-mono text-label-mono tracking-widest text-on-surface uppercase">
                   Studio
-                </span>
+                </span> */}
               </div>
               <p className="font-sans text-body-md text-on-surface-variant max-w-md">
                 Website design and full-stack development crafting bespoke digital flagships
